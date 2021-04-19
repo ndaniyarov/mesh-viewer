@@ -1,0 +1,5 @@
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/build/CMakeFiles/rebuild_cache.dir
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/build/CMakeFiles/edit_cache.dir
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/build/CMakeFiles/mesh-demo.dir
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/build/CMakeFiles/mesh-viewer.dir
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/build/CMakeFiles/simple-mesh.dir

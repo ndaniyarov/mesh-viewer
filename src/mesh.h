@@ -7,6 +7,18 @@
 namespace agl {
    class Mesh
    {
+   private:
+      float* p = NULL;
+      float* n = NULL;
+      unsigned int* ind = NULL;
+      float minx = INFINITY;
+      float miny = INFINITY;
+      float minz = INFINITY;
+      float maxx = 0.0;
+      float maxy = 0.0;
+      float maxz = 0.0;
+      int vnum = 0;
+      int tnum = 0;
    public:
 
       Mesh();
