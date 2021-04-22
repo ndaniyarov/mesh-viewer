@@ -44,7 +44,11 @@ static void LoadModel(int modelId)
 
    glBindBuffer(GL_ARRAY_BUFFER, theVboNormalId);
    glBufferData(GL_ARRAY_BUFFER, theModel.numVertices() * 3 * sizeof(float), theModel.normals(), GL_DYNAMIC_DRAW);
-
+   /*
+   for (int i = 0; i < theModel.numVertices()*3; i= i+3){
+      cout << theModel.normals()[i] << theModel.normals()[i+1]<< theModel.normals()[i+2] << "\n";
+   }
+*/
    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, theElementbuffer);
    glBufferData(GL_ELEMENT_ARRAY_BUFFER, theModel.numTriangles() * 3 * sizeof(unsigned int), theModel.indices(), GL_DYNAMIC_DRAW);
 }
@@ -301,6 +305,7 @@ int main(int argc, char **argv)
    glUniform3f(glGetUniformLocation(shaderId, "Light.La"), 1.0, 1.0, 1.0);
    glUniform3f(glGetUniformLocation(shaderId, "Light.Ld"), 1.0, 1.0, 1.0);
    glUniform3f(glGetUniformLocation(shaderId, "Light.Ls"), 1.0, 1.0, 1.0);
+   glUniform3f(glGetUniformLocation(shaderId, "Light.Intensity"), 1.0, 1.0, 1.0); 
 
    //GLuint matrixParam = glGetUniformLocation(shaderId, "mvp");
    glm::mat4 transform(1.0); // initialize to identity
@@ -319,7 +324,7 @@ int main(int argc, char **argv)
       glm::mat3 nmv = glm::mat3(glm::vec3(mv[0]), glm::vec3(mv[1]), glm::vec3(mv[2]));
       //glUniformMatrix4fv(matrixParam, 1, GL_FALSE, &mvp[0][0]);
 
-      glUniformMatrix4fv(nmvId, 1, GL_FALSE, &nmv[0][0]);
+      glUniformMatrix3fv(nmvId, 1, GL_FALSE, &nmv[0][0]);
       glUniformMatrix4fv(mvId, 1, GL_FALSE, &mv[0][0]);
       glUniformMatrix4fv(mvpId, 1, GL_FALSE, &mvp[0][0]);
 

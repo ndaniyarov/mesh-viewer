@@ -37,6 +37,8 @@ vec3 phongModel( vec4 position, vec3 norm )
  if( sDotN > 0.0 )
  spec = Light.Ls * Material.Ks * pow(max(dot(r,v), 0.0 ), Material.Shininess );
  return ambient + diffuse + spec;
+ //return 0.5 * (norm + vec3(1));
+ //return vec3(1,0,0);
 }
 void main()
 {

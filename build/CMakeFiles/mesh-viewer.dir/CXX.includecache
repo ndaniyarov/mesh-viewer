@@ -818,6 +818,24 @@ random
 cmath
 -
 
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/mesh.cpp
+mesh.h
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/mesh.h
+stdio.h
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/stdio.h
+string.h
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/string.h
+stdlib.h
+/Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/stdlib.h
+cmath
+-
+iostream
+-
+fstream
+-
+sstream
+-
+
 /Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/mesh.h
 AGLM.h
 /Users/niginadaniyarova/Desktop/cs312/mesh-viewer/src/AGLM.h

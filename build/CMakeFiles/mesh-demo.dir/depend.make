@@ -360,6 +360,7 @@ CMakeFiles/mesh-demo.dir/src/meshdemo.cpp.o: ../src/AGL.h
 CMakeFiles/mesh-demo.dir/src/meshdemo.cpp.o: ../src/AGLM.h
 CMakeFiles/mesh-demo.dir/src/meshdemo.cpp.o: ../src/mesh.h
 CMakeFiles/mesh-demo.dir/src/meshdemo.cpp.o: ../src/meshdemo.cpp
+CMakeFiles/mesh-demo.dir/src/meshdemo.cpp.o: ../src/osutils.h
 
 CMakeFiles/mesh-demo.dir/src/osutils.cpp.o: ../src/osutils.cpp
 

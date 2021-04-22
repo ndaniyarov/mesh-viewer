@@ -1,4 +1,3 @@
-
 #include "mesh.h"
 #include "stdio.h"
 #include "string.h"
@@ -16,10 +15,24 @@ using namespace agl;
 
 Mesh::Mesh() 
 {
+      p = NULL;
+      n = NULL;
+      ind = NULL;
+      minx = INFINITY;
+      miny = INFINITY;
+      minz = INFINITY;
+      maxx = 0.0;
+      maxy = 0.0;
+      maxz = 0.0;
+      vnum = 0;
+      tnum = 0;
 }
 
 Mesh::~Mesh()
 {
+   delete[] p;
+   delete[] n;
+   delete[] ind;
 }
    
 bool Mesh::loadPLY(const std::string& filename)
@@ -28,12 +41,13 @@ bool Mesh::loadPLY(const std::string& filename)
    if (!file){
       return false;
    }
-   string line;
-   string skip;
+   std::string line;
+   std::string skip;
    string ply;
    std::string format;
    std::string comment;
    std::string headerEnd;
+   std::string pn;
    int vsize = 0;
    int psize = 0;
    getline(file, ply);
@@ -52,28 +66,51 @@ bool Mesh::loadPLY(const std::string& filename)
    getline(file, skip);
    getline(file, skip);
    getline(file, skip);
-   file >> skip >> skip >> psize;
-   tnum = psize;
+   while (skip != "face"){
+      file >> skip;
+   }
+   file >> psize;
    cout << psize << "\n";
+   tnum = psize;
    getline(file, skip);
    getline(file, headerEnd);
    getline(file, headerEnd);
    cout << headerEnd << "\n";
    p = new float[vsize*3];
    n = new float[vsize*3];
+   
+   vector <float> tokens;
+  
+   //cout << pn << "\n";
+   string intermediate;
    for (int i = 0; i < vsize*3; i=i+3){
-      file >> p[i] >> p[i+1] >> p[i+2] 
-           >> n[i] >> n[i+1] >> n[i+2];
+      getline(file, pn);
+      stringstream check1(pn);
+      
+    while(getline(check1, intermediate, ' '))
+    {
+        tokens.push_back(std::stof(intermediate));
+    }
+      p[i] = tokens[0];
+      p[i+1] = tokens[1];
+      p[i+2] = tokens[2];
+      n[i] = tokens[3];
+      n[i+1] = tokens[4];
+      n[i+2] = tokens[5];
+      //cout << p[i] << p[i+1] << p[i+2] << " " << n[i] << n[i+1] << n[i+2] << "\n";
       minx = std::min(minx, p[i]);
       miny = std::min(miny, p[i+1]);
       minz = std::min(minz, p[i+2]);
       maxx = std::min(maxx, p[i]);
       maxy = std::min(maxy, p[i+1]);
       maxz = std::min(maxz, p[i+2]);
+      tokens.clear();
+      //intermediate = "";
    }
    ind = new unsigned int[psize*3];
    for (int i = 0; i < psize * 3; i = i + 3){
       file >> skip >> ind[i] >> ind[i+1] >> ind[i+2];
+      //cout << ind[i] << ind[i+1] << ind[i+2] << "\n";
    }
    return true;
 }
@@ -112,4 +149,3 @@ unsigned int* Mesh::indices() const
 {
    return ind;
 }
-
